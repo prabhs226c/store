@@ -44,6 +44,37 @@ INSERT INTO `tbl_store_categories` VALUES (5,'Bread','1602802016826.jpg',1,'2020
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_store_earnings`
+--
+
+DROP TABLE IF EXISTS `tbl_store_earnings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_store_earnings` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `store_order_id` int NOT NULL,
+  `store_id` int NOT NULL,
+  `admin_charge_amount` float(16,2) NOT NULL,
+  `owners_amount` float(16,2) NOT NULL,
+  `total_amount` float(16,2) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created` datetime DEFAULT NULL,
+  `payment_status` tinyint NOT NULL DEFAULT '0' COMMENT '0=>pending, 1=>Paid',
+  `payment_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_store_earnings`
+--
+
+LOCK TABLES `tbl_store_earnings` WRITE;
+/*!40000 ALTER TABLE `tbl_store_earnings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store_earnings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_store_order_details`
 --
 
@@ -177,7 +208,7 @@ CREATE TABLE `tbl_store_owner` (
 
 LOCK TABLES `tbl_store_owner` WRITE;
 /*!40000 ALTER TABLE `tbl_store_owner` DISABLE KEYS */;
-INSERT INTO `tbl_store_owner` VALUES (3,'Mike','Bird','3216549870','TestUsser%40test.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,'2020-10-16 02:53:09','2020-10-16 03:13:58',2,2,1,'H3H 1C2','7980+Ave.+Stuart'),(4,'Rossy','Tshibangu','9874563210','Rossy%40test.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,'2020-10-16 03:17:23','2020-10-16 03:17:23',2,2,1,'H2H 1C5','1537+Avenue+Summerhill');
+INSERT INTO `tbl_store_owner` VALUES (3,'Mike','Bird','3216549870','TestUsser%40test.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,'2020-10-16 02:53:09','2020-10-16 03:13:58',2,2,1,'H3H 1C2','7980+Ave.+Stuart'),(4,'Rossy','Sarpanch','9874563210','Rossy%40test.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,'2020-10-16 03:17:23','2020-10-17 06:27:04',2,2,1,'H2H 1C5','1537+Avenue+Summerhill');
 /*!40000 ALTER TABLE `tbl_store_owner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +243,7 @@ CREATE TABLE `tbl_store_subcategories` (
 
 LOCK TABLES `tbl_store_subcategories` WRITE;
 /*!40000 ALTER TABLE `tbl_store_subcategories` DISABLE KEYS */;
-INSERT INTO `tbl_store_subcategories` VALUES (12,5,11,'Piiza+Base+%28Medium%29',1,'Pre+Baked+Pizza+Base','1602808669413.jpg',0,0.00,4.00,1,'2020-10-16 06:07:49','2020-10-16 06:17:11');
+INSERT INTO `tbl_store_subcategories` VALUES (12,5,11,'Piiza+Base+%28Medium%29',1,'Pre+Baked+Pizza+Base','1602808669413.jpg',0,0.00,4.00,1,'2020-10-16 06:07:49','2020-10-17 06:47:46');
 /*!40000 ALTER TABLE `tbl_store_subcategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +289,7 @@ CREATE TABLE `tbl_stores` (
 
 LOCK TABLES `tbl_stores` WRITE;
 /*!40000 ALTER TABLE `tbl_stores` DISABLE KEYS */;
-INSERT INTO `tbl_stores` VALUES (11,'FloorMart','4569873212','FloorMart@test.com','1537 Avenue Summerhill, Montreal','H3H 1C2',NULL,1,2,2,'45.497327','-73.5838138',4,'09:00:00','20:52:00',1,1,'2020-10-16 05:24:24','2020-10-16 05:24:24','','1602806065859.png',7.00,1,23.00);
+INSERT INTO `tbl_stores` VALUES (11,'FloorMart','4569873212','FloorMart@test.com','1537 Avenue Summerhill, Montreal','H3H 1C2',NULL,1,2,2,'45.497327','-73.5838138',4,'09:00:00','20:52:00',1,1,'2020-10-16 05:24:24','2020-10-17 06:47:38','','1602806065859.png',7.00,1,23.00);
 /*!40000 ALTER TABLE `tbl_stores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,4 +331,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-15 21:54:49
+-- Dump completed on 2020-10-16 21:19:53
