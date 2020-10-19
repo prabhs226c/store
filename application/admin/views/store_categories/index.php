@@ -7,7 +7,7 @@
                 <div class="col-lg-8 p-0">
                     <div class="page-header">
                         <div class="page-title">
-                            <h1><?= $this->lang->line('categories') ?></h1>
+                            <h1><?= $this->lang->line('store_categories') ?></h1>
                         </div>
                     </div>
                 </div>
@@ -48,8 +48,8 @@
                         <div class="card alert">
 
                             <div class="pull-right">
-                                <a class="btn btn-success btn-flat m-b-10 m-l-5" style="margin-right:15px!important" href="<?= CATEGORY_PATH ?>/add"><?= $this->lang->line('add_category') ?></a>
-                                <input class="btn btn-danger btn-flat m-b-10 m-l-5" style="margin-left:-14px!important" type="submit" onclick="multiple_delete('<?= CATEGORY_PATH ?>/multiple_delete')" id="postme" value="<?= $this->lang->line('delete') ?>" disabled="disabled">
+                                <a class="btn btn-success btn-flat m-b-10 m-l-5" style="margin-right:15px!important" href="<?= STORE_CATEGORY_PATH ?>/add"><?= $this->lang->line('add_category') ?></a>
+                                <input class="btn btn-danger btn-flat m-b-10 m-l-5" style="margin-left:-14px!important" type="submit" onclick="multiple_delete('<?= STORE_CATEGORY_PATH ?>/multiple_delete')" id="postme" value="<?= $this->lang->line('delete') ?>" disabled="disabled">
 
 
                             </div>
@@ -82,7 +82,7 @@
                                                     <td><?= $single['id'] ?></td>
                                                     <td><img src="<?=UPLOAD_URL.'category/'.$single['image']?>" width="80px" /></td>
                                                     <td><?= urldecode($single['title']) ?></td>
-                                                    <td>&nbsp;&nbsp;<a class="ti-pencil-alt" data-toggle="tooltip" style="color: #00c0ef;" title="<?= $this->lang->line('edit') ?>!" href="<?= CATEGORY_PATH ?>/edit/<?= $single['id'] ?>"></a>&nbsp;&nbsp;<a href="javascript:void(0)" class="ti-trash" style="color:red" data-toggle="tooltip" title="<?= $this->lang->line('delete') ?>!" onclick="delete_status('<?= CATEGORY_PATH ?>/delete', '<?= $single['id'] ?>')"></a>&nbsp;&nbsp;</td>
+                                                    <td>&nbsp;&nbsp;<a class="ti-pencil-alt" data-toggle="tooltip" style="color: #00c0ef;" title="<?= $this->lang->line('edit') ?>!" href="<?= STORE_CATEGORY_PATH ?>/edit/<?= $single['id'] ?>"></a>&nbsp;&nbsp;<a href="javascript:void(0)" class="ti-trash" style="color:red" data-toggle="tooltip" title="<?= $this->lang->line('delete') ?>!" onclick="delete_status('<?= STORE_CATEGORY_PATH ?>/delete', '<?= $single['id'] ?>')"></a>&nbsp;&nbsp;</td>
                                                 </tr>
                                         <?php
 

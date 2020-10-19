@@ -9,7 +9,7 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                 <div class="col-lg-8 p-0">
                     <div class="page-header">
                         <div class="page-title">
-                            <h1><?= $this->lang->line('categories') ?></h1>
+                            <h1><?= $this->lang->line('store_categories') ?></h1>
                         </div>
                     </div>
                 </div><!-- /# column -->
@@ -18,7 +18,7 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="<?= DASHBOARD_PATH ?>"><?= $this->lang->line('dashboard') ?></a></li>
-                                <li><a href="<?= CATEGORY_PATH ?>"><?= $this->lang->line('category_list') ?></a></li>
+                                <li><a href="<?= STORE_CATEGORY_PATH ?>"><?= $this->lang->line('category_list') ?></a></li>
                                 <li><a class="active" href="javascript:void(0)"><?= $this->lang->line('edit_category') ?></a></li>
                             </ol>
                         </div>
@@ -51,7 +51,7 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                             <div class="card-body">
                                 <div class="menu-upload-form">
 
-                                    <form class="form-horizontal" action="<?= CATEGORY_PATH ?>/edit/<?= $results->id; ?>" method="post" accept-charset="utf-8" id="editCategory" enctype="multipart/form-data">
+                                    <form class="form-horizontal" action="<?= STORE_CATEGORY_PATH ?>/edit/<?= $results->id; ?>" method="post" accept-charset="utf-8" id="editCategory" enctype="multipart/form-data">
 
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"><?= $this->lang->line('title') ?>:</label>

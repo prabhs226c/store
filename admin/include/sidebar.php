@@ -11,6 +11,7 @@
                         <li><a href="<?= CUSTOMER_PATH ?>"><?=$this->lang->line('customers')?></a></li>
                         <li><a href="<?= DRIVERS_PATH ?>"><?=$this->lang->line('drivers')?></a></li>
                         <li><a href="<?= OWNER_PATH ?>"><?=$this->lang->line('restaurant_owners')?></a></li>
+                        <li><a href="<?= STORE_OWNER_PATH ?>"><?=$this->lang->line('store_owners')?></a></li>
 
                     </ul>
                 </li>
@@ -20,6 +21,8 @@
 
                         <li><a href="<?= CATEGORY_PATH ?>"><?=$this->lang->line('categories')?></a></li>
                         <li><a href="<?= SUBCATEGORY_PATH ?>"><?=$this->lang->line('subcategories')?></a></li>
+                          <li><a href="<?= STORE_CATEGORY_PATH ?>"><?=$this->lang->line('store_categories')?></a></li>
+                        <li><a href="<?= STORE_SUBCATEGORY_PATH ?>"><?=$this->lang->line('store_subcategories')?></a></li>
                         <li><a href="<?= SIDES_PATH ?>"><?=$this->lang->line('sides')?></a></li>
                         <li><a href="<?= ADDON_PATH ?>"><?=$this->lang->line('addon')?></a></li>
 
@@ -38,6 +41,7 @@
                 <li><a href="<?= ORDER_PATH ?>"><i class="fa fa-truck"></i> <?=$this->lang->line('orders')?> </a></li>
                 <li><a href="<?= CUISINE_PATH ?>"><i class="fa fa-cutlery"></i><?=$this->lang->line('cuisine')?></a></li>
                 <li><a href="<?= RESTAURANTS_PATH ?>"><i class="fa fa-cutlery"></i><?=$this->lang->line('restaurants')?></a></li>
+                <li><a href="<?= STORES_PATH ?>"><i class="fa fa-cutlery"></i><?=$this->lang->line('stores')?></a></li>
                 <li><a href="<?= SETTINGS_PATH ?>"><i class="ti-settings"></i><?=$this->lang->line('master_settings')?></a></li>
 
             </ul>
@@ -70,12 +74,12 @@
                             <li><a href="<?= PROFILE_PATH ?>/change_language/french/fr"><img class="avatar-img" src="<?= ASSETSPATH . 'images/' ?>french.png" alt="" /><span>&nbsp;&nbsp;&nbsp;French(FR)</span></a></li>
                             <li><a href="<?= PROFILE_PATH ?>/change_language/spanish/es"><img class="avatar-img" src="<?= ASSETSPATH . 'images/' ?>spanish.png" alt="" /><span>&nbsp;&nbsp;&nbsp;Spanish(ES)</span></a></li>
                             <li><a href="<?= PROFILE_PATH ?>/change_language/arabic/ar"><img class="avatar-img" src="<?= ASSETSPATH . 'images/' ?>arabic.png" alt="" /><span>&nbsp;&nbsp;&nbsp;Arabic(AR)</span></a></li>
-                            
+
                         </ul>
                     </div>
                 </div>
             </li>
-        
+
 
 
             <li class="header-icon dib">

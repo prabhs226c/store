@@ -27,9 +27,9 @@ class Stores extends MY_Controller {
         $this->dataModule['restaurant_info']=  $this->Sitefunction->get_single_by_query("SELECT r.*, ct.name as city_name, s.name as state_name, c.name as country_name FROM ".TBL_STORES." as r INNER JOIN ".TBL_CITY." as ct ON ct.id=r.city_id INNER JOIN ".TBL_STATE." as s ON s.id=r.state_id  INNER JOIN ".TBL_COUNTRY." as c ON c.id=r.country_id WHERE r.id=".$id." and r.status=1 and r.owner_id=".$this->user_id);
         $this->dataModule['controller']=$this; 
 
-        $where = array('s.store_id='=>$id, 's.status'=>1);
+        $where = array('s.restaurant_id='=>$id, 's.status'=>1);
         $columns = "c.*";
-        $join = array(TBL_STORE_SUBCATEGORIES.' as s'=>"s.store_category_id=c.id");
+        $join = array(TBL_STORE_SUBCATEGORIES.' as s'=>"s.category_id=c.id");
         $group_by = 'c.id';
         $this->dataModule['categories']=  $this->Sitefunction->get_all_rows(TBL_STORE_CATEGORIES.' as c', $columns, $where, $join, array(), '', 'LEFT', array(), $group_by, array(), array());
 
@@ -59,9 +59,9 @@ class Stores extends MY_Controller {
   
     function invoice($id) {
 
-      $where = array('o.store_id='=>$id, 'o.status'=>1, 'r.owner_id'=>$this->user_id, 'e.status'=>1);
+      $where = array('o.restaurent_id='=>$id, 'o.status'=>1, 'r.owner_id'=>$this->user_id, 'e.status'=>1);
       $columns = "o.*, e.admin_charge_amount, e.owners_amount, e.total_amount, e.payment_status, e.payment_date";
-      $join = array(TBL_EARNINGS.' as e'=>"e.store_order_id=o.id", TBL_STORES.' as r'=>"r.id=o.store_id");
+      $join = array(TBL_EARNINGS.' as e'=>"e.order_id=o.id", TBL_STORES.' as r'=>"r.id=o.restaurent_id");
       $group_by = 'o.id';
       $this->dataModule['invoice_info']=  $this->Sitefunction->get_all_rows(TBL_STORE_ORDERS.' as o', $columns, $where, $join, array('o.id'=>'desc'), '', 'INNER', array(), $group_by, array(), array());
 

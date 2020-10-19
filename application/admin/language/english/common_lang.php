@@ -54,7 +54,7 @@ $lang["price"] = "Price";
 $lang["restaurant_name"] = "Restaurant Name";
 $lang["customer_name"] = "Customer Name";
 $lang["order_id"] = "Order ID";
-$lang["online_order_list"] = "Online Order List";   
+$lang["online_order_list"] = "Online Order List";
 $lang["total_earnings"] = "Total Earnigs";
 $lang["total_restaurants"] = "Total Restaurants";
 $lang["total_owners"] = "Total Owners";
@@ -114,7 +114,7 @@ $lang["customers"] = "Customers";
 $lang["customer_list"] = "Customer list";
 
 
-//Drivers 
+//Drivers
 $lang["drivers"] = "Drivers";
 $lang["driver_list"] = "Driver List";
 $lang["add_driver"] = "Add Driver";
@@ -228,6 +228,19 @@ $lang["total_payable_amount"] = "Total payable amount";
 $lang["restaurant_details"] = "Restaurant details";
 $lang["food_information"] = "Food information";
 $lang["contact_and_address_information"] = "Contact & Address Information";
+
+//Store Ownners
+$lang['add_store'] = "Add Store";
+$lang['edit_store'] = "Edit Store";
+$lang['store_details'] = "Store Details";
+$lang['store'] = "Store";
+$lang['stores'] = "Stores";
+$lang['store_list'] = "Store List";
+$lang['product_information'] = "Product Information";
+$lang['store_owners'] = "Store Owners";
+$lang['store_categories'] = "Categories (Stores)";
+$lang['store_subcategories'] = "SubCategories (Stores)";
+$lang['select_store'] = "Select Store";
 
 
 
@@ -351,7 +364,7 @@ $lang["subcategory_updated_successfully"] = "Subcategory updated successfully.";
 
 
 
-// DataTables 
+// DataTables
 
 $lang["display"] = "Display";
 $lang["records_per_page"] = "records per page";

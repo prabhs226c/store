@@ -91,7 +91,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('DB_SERVER', 'localhost:3306');
 define('DB_USER', 'root');
 define('DB_PASS', 'prabhs226');
-define('DB_DATABASE', 'delivery_app');
+define('DB_DATABASE', 'delivery_eztakeout');
 define('DOMAIN_URL', 'http://localhost:88/deliveryripple/');
 define('CURRENCY', '$');
 
@@ -108,18 +108,18 @@ define('UPLOAD_URL', DOMAIN_URL. 'upload/');
 
 define("TBL_PREFIX", "tbl_");
 define('TBL_ADMIN' , TBL_PREFIX . "admin");
-define("TBL_STORE_CATEGORIES", TBL_PREFIX . "store_categories");
-define("TBL_STORE_SUBCATEGORIES", TBL_PREFIX . "store_subcategories");
+define("TBL_STORE_CATEGORIES", TBL_PREFIX . "grocerycategories");
+define("TBL_STORE_SUBCATEGORIES", TBL_PREFIX . "subgrocery");
 define("TBL_CITY", TBL_PREFIX . 'city');
 define("TBL_STATE", TBL_PREFIX . 'state');
 define("TBL_COUNTRY", TBL_PREFIX . 'country');
 define("TBL_USERS", TBL_PREFIX . 'users');
 define("TBL_STORE_OWNERS", TBL_PREFIX . 'store_owner');
-define("TBL_STORES", TBL_PREFIX . 'stores');
+define("TBL_STORES", TBL_PREFIX . 'grocerystores');
 define("TBL_NOTIFICATIONS", TBL_PREFIX . 'notification');
-define("TBL_STORE_ORDERS", TBL_PREFIX . 'store_orders');
+define("TBL_STORE_ORDERS", TBL_PREFIX . 'groceryorders');
 define("TBL_ADDRESS", TBL_PREFIX . 'user_addresses');
-define("TBL_ORDERDETAIL", TBL_PREFIX . 'store_order_details');
+define("TBL_ORDERDETAIL", TBL_PREFIX . 'groceryorder_details');
 define("TBL_DEVICE_TOKENS", TBL_PREFIX . 'device_token');
 define("TBL_TRANSACTION", TBL_PREFIX . 'transaction');
 define("TBL_EARNINGS", TBL_PREFIX . 'store_earnings');

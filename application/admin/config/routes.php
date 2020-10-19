@@ -54,3 +54,5 @@ $route['logout'] = 'login/logout';
 $route['settings/company-profile'] = 'settings/company_profile';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['errors'] = 'Errors';
+

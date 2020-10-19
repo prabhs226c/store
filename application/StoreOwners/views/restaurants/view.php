@@ -131,7 +131,7 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                     $where = array('status!='=>9, "store_category_id"=>$cats['id'], "store_id"=>$restaurant_info->id);
+                                     $where = array('status!='=>9, "category_id"=>$cats['id'], "restaurant_id"=>$restaurant_info->id);
                                      $columns = "*";
                                      $join = array();
                                      $group_by = '';

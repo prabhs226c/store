@@ -14,7 +14,7 @@ class SubCategories extends MY_Controller {
 	public function index() {
         $where = array('s.status!='=>9, 'owner_id'=>$this->user_id);
         $columns = "s.*, c.title as cat_title, r.name as restaurant_name";
-        $join = array(TBL_STORE_CATEGORIES.' as c' => "c.id=s.store_category_id", TBL_STORES.' as r' => "r.id=s.store_id");
+        $join = array(TBL_STORE_CATEGORIES.' as c' => "c.id=s.category_id", TBL_STORES.' as r' => "r.id=s.restaurant_id");
         $group_by = '';
         $this->dataModule['results']=  $this->Sitefunction->get_all_rows(TBL_STORE_SUBCATEGORIES.' as s', $columns, $where, $join, array(), '', 'LEFT', array(), $group_by, array(), array());
 		$this->load->view('subcategories/index', $this->dataModule);

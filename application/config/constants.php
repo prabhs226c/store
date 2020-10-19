@@ -64,10 +64,10 @@ defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', 'localhost:3306');
 define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_DATABASE', 'delivery_app');
+define('DB_PASS', 'prabhs226');
+define('DB_DATABASE', 'delivery_eztakeout');
 define('DOMAIN_URL', 'http://localhost/deliveryripple/');
 define('DOMAIN_BASE_URL', $_SERVER['DOCUMENT_ROOT'] . '/deliveryripple/');
 define('SITE_URL', DOMAIN_URL);

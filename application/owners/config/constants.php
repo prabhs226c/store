@@ -88,17 +88,17 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', 'localhost:3306');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'prabhs226');
 define('DB_DATABASE', 'delivery_app');
-define('DOMAIN_URL', 'http://3.96.30.1/deliveryripple/');
+define('DOMAIN_URL', 'http://localhost:88/deliveryripple/');
 define('CURRENCY', '$');
 
 define('DOMAIN_BASE_URL', $_SERVER['DOCUMENT_ROOT']. '/deliveryripple');
 define('BASE_URL', $_SERVER['DOCUMENT_ROOT'] . '/deliveryripple/owners/');
 define('PHP_PATH', 'php');
-	
+
 
 define('SITE_URL', DOMAIN_URL . 'owners');
 define("ADMIN_INCLUDE_PATH", BASE_URL . 'include');
