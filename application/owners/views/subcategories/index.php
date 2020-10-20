@@ -46,14 +46,19 @@
 
                         <div class="card alert">
 
-                            
+							<div class="pull-right">
+								<a class="btn btn-success btn-flat m-b-10 m-l-5" style="margin-right:15px!important" href="<?=SUBCATEGORY_PATH?>/add"><?=$this->lang->line('add_subcategory')?></a>
+								<input class="btn btn-danger  btn-flat m-b-10 m-l-5" style="margin-left:-14px!important" type="submit" onclick="multiple_delete('<?=SUBCATEGORY_PATH?>/multiple_delete')" id="postme" value="<?=$this->lang->line('delete')?>" disabled="disabled">
+
+
+							</div>
 
                             <div class="bootstrap-data-table-panel">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                 
                                     <thead>
                                         <tr>
-                                           
+											<th><input type='checkbox' name='select_all' id='select_all' value=''/></th>
                                             <th><?=$this->lang->line('image')?></th>
                                             <th><?=$this->lang->line('category')?></th>
                                             <th><?=$this->lang->line('restaurant')?></th>
@@ -74,7 +79,7 @@
                                             
                                             foreach ($results as $single) { ?>
                                             <tr>
-                                            
+												<td><input type='checkbox' name='checked_id' id='checkbox1' class='checkbox' value='<?=$single['id']?>'/></td>
                                             <td><img src="<?=UPLOAD_URL.'subcategory/'.$single['image']?>" width="80px" /></td>
                                             <td><?=urldecode($single['cat_title'])?></td>
                                             <td><?=urldecode($single['restaurant_name'])?></td>
@@ -82,7 +87,7 @@
                                             <td><?=$single['type']==1?$this->lang->line('veg'):$this->lang->line('non_veg')?></td>
                                             <td><?=$single['discount']?><?=$single['discount_type']==0?"$":"%"?></td>
                                             <td><?=urldecode($single['description'])?></td>
-                                            <td><div><label class="switch"><input type="checkbox" class="status_change ct_switch"  data-id="<?=$single['id']?>" value="<?=$single['status']?>" <?=$single['status']==1?"checked": ""?>><span class="slider round"></span></label></div></td>
+                                            <td>&nbsp;&nbsp;<a class="ti-pencil-alt" data-toggle="tooltip" style="color: #00c0ef;" title="<?=$this->lang->line('edit')?>!" href="<?=SUBCATEGORY_PATH?>/edit/<?=$single['id']?>"></a>&nbsp;&nbsp;<a href="javascript:void(0)" class="ti-trash" style="color:red" data-toggle="tooltip" title="<?=$this->lang->line('delete')?>!" onclick="delete_status('<?=SUBCATEGORY_PATH?>/delete', '<?=$single['id']?>')"></a>&nbsp;&nbsp<div><label class="switch"><input type="checkbox" class="status_change ct_switch"  data-id="<?=$single['id']?>" value="<?=$single['status']?>" <?=$single['status']==1?"checked": ""?>><span class="slider round"></span></label></div></td>
                                             </tr>
                                             <?php
                                              

@@ -56,7 +56,7 @@ class MY_Model extends CI_Model {
             $this->db->limit($limit[0], $limit[1]);
         }
         $database_object = $this->db->get($table_name);
-		
+
         $table_data = array();
         foreach ($database_object->result_array() as $row) {
             $table_data[] = $row;

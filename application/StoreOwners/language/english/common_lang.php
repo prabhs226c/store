@@ -155,10 +155,12 @@ $lang["inprocess"] = "Inprocess";
 $lang["contact_no"] = "Conact no";
 $lang["change_status"] = "Change Status";
 $lang["user"] = "User";
+$lang["description"] = "Description";
 // Restaurant
 
 $lang["restaurants"] = "Restaurants";
 $lang["stores"] = "Stores";
+$lang["store"] = "Store";
 $lang["upload_image"] = "Upload image";
 $lang["discount_type"] = "Discount type";
 $lang["flat_amount"] = "Flat Amount";
@@ -187,6 +189,7 @@ $lang["contact_and_address_information"] = "Contact & Address Information";
 
 
 $lang["subcategories"] = "Subcategories";
+$lang["add_subcategory"] = "Add Subcategory";
 $lang["subcategory_list"] = "Subcategory list";
 $lang["food_type"] = "Food type";
 $lang["veg"] = "Veg";

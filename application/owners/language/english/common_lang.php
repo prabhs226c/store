@@ -158,6 +158,7 @@ $lang["user"] = "User";
 // Restaurant
 
 $lang["restaurants"] = "Restaurants";
+$lang["restaurant"] = "Restaurant";
 $lang["upload_image"] = "Upload image";
 $lang["discount_type"] = "Discount type";
 $lang["flat_amount"] = "Flat Amount";
@@ -189,7 +190,8 @@ $lang["subcategory_list"] = "Subcategory list";
 $lang["food_type"] = "Food type";
 $lang["veg"] = "Veg";
 $lang["non_veg"] = "Non-veg";
-
+$lang["add_subcategory"] = "Add Sub-Category";
+$lang['description'] = "Description";
 
 
 //Sides
