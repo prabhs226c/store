@@ -91,7 +91,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('DB_SERVER', 'localhost:3306');
 define('DB_USER', 'root');
 define('DB_PASS', 'prabhs226');
-define('DB_DATABASE', 'delivery_app');
+define('DB_DATABASE', 'delivery_eztakeout');
 define('DOMAIN_URL', 'http://localhost:88/deliveryripple/');
 define('CURRENCY', '$');
 
