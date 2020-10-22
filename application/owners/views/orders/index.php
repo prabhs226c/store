@@ -62,7 +62,7 @@
                                             <th><?=$this->lang->line('discount')?></th>
                                             <th><?=$this->lang->line('tip')?></th>
                                             <th><?=$this->lang->line('order_date')?></th>
-                                            <th><?=$this->lang->line('action')?></th>
+
                                             
                                         </tr>
                                     </thead>
@@ -85,7 +85,7 @@
                                             <td><?=$single['discount_price']?></td>
                                             <td><?=$single['tip_price']?></td>
                                             <td><?=date('d-m-Y h:i a', strtotime($single['created']))?></td>
-                                            <td>&nbsp;&nbsp;<a class="ti-eye" data-toggle="tooltip" style="color: #00c0ef;" title="View!" href="<?=ORDER_PATH?>/view/<?=$single['id']?>"></a></td>
+
                                             </tr>
                                             <?php
                                              
@@ -131,7 +131,7 @@
 						<input type="hidden" name="order_status" value="2">
 						<input type="hidden" name="orderid" id="formorderid" value="">
 						<input type="hidden" name="userid"  id="formuserid" value="">
-						<button type="submit"  style="margin: 0 auto;display: block;" class="btn btn-success btn-lg">Accept Order</button>
+						<button id="modalformbtn" type="submit"  style="margin: 0 auto;display: block;" class="btn btn-success btn-lg">Accept Order</button>
 					</form>
 
 				</div>
@@ -169,6 +169,13 @@
 			$('#tbl_orderItem').html(response[1][0]['title'])
 			$('#tbl_orderQty').html(response[1][0]['product_quantity'])
 			$('#tbl_orderNote').html(response[1][0]['extra_note'])
+
+			if(response[0]['order_status']!=1)
+			{
+				$('#modalformbtn').hide()
+			}else{
+				$('#modalformbtn').show()
+			}
 
 
 			$('#orderDetails').modal()
