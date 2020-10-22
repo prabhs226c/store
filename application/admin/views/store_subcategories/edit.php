@@ -53,7 +53,7 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                             <option value=""><?=$this->lang->line('select_store')?></option>
                                                             <?php
                                                             foreach ($restaurants as $row) { ?>
-                                                                <option <?= $row['id'] == $results->id ? 'selected' : '' ?> value="<?= $row['id']; ?>"><?= urldecode($row['name']); ?></option>
+                                                                <option <?= $row['id'] == $results->restaurant_id ? 'selected' : '' ?> value="<?= $row['id']; ?>"><?= urldecode($row['name']); ?></option>
                                                             <?php } ?>
                                                         </select>
                                                         <?= form_error('restaurant_id'); ?>
@@ -65,7 +65,7 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label"><?=$this->lang->line('category')?>:</label>
                                                     <div class="col-sm-8">
-                                                        <select class="form-control required" name="category_id" id="category_id">
+                                                        <select class="form-control " name="category_id" id="category_id">
 
                                                             <option value=""><?=$this->lang->line('select_category')?></option>
                                                             <?php
@@ -73,6 +73,9 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                                 <option <?= $row['id'] == $results->category_id ? 'selected' : '' ?> value="<?= $row['id']; ?>"><?= urldecode($row['title']); ?></option>
                                                             <?php } ?>
                                                         </select>
+														<input type="hidden" id="isNewCategory"  name="isNewCategory" value="0">
+														<button type="button" id="newCategoryBtn">New Category</button>
+														<input id="newCategoryText"  style="display:none" class="form-control " type="text" name="newCategory" value="" placeholder="New Category">
                                                         <?= form_error('category_id'); ?>
                                                     </div>
                                                 </div>
@@ -87,22 +90,23 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label"><?=$this->lang->line('food_type')?>:</label>
-                                                    <div class="col-sm-8">
-                                                        <label class="customRadio"><?=$this->lang->line('veg')?>
-                                                            <input type="radio" <?= $results->type == '1' ? 'checked' : '' ?> name="type" checked value="1">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <label class="customRadio"><?=$this->lang->line('non_veg')?>
-                                                            <input type="radio" name="type" value="2" <?= $results->type == '2' ? 'checked' : '' ?>>
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <?= form_error('type'); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-sm-4 control-label"><?=$this->lang->line('unit_type')?>:</label>
+												<div class="col-sm-8">
+													<select class="form-control required" name="type" id="type">
+
+														<option  value=""><?=$this->lang->line('select_unit')?></option>
+														<option <?= $results->type == '1' ? 'selected' : '' ?> value="1"><?=$this->lang->line('per_kg')?></option>
+														<option <?= $results->type == '2' ? 'selected' : '' ?> value="2"><?=$this->lang->line('per_lbs')?></option>
+														<option <?= $results->type == '3' ? 'selected' : '' ?> value="3"><?=$this->lang->line('per_unit')?></option>
+														<option <?= $results->type == '4' ? 'selected' : '' ?> value="4"><?=$this->lang->line('per_dozen')?></option>
+
+													</select>
+													<?= form_error('type'); ?>
+												</div>
+											</div>
+										</div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label"><?=$this->lang->line('description')?>:</label>
@@ -228,6 +232,15 @@ include(ADMIN_INCLUDE_PATH . '/footer.php'); ?>
         return true;
     }
 
+	//// btn to click
+	let newCatBtn = document.getElementById('newCategoryBtn');
+	newCatBtn.addEventListener("click",(e)=>{
+		$('#category_id').hide();
+		$('#newCategoryBtn').hide();
+		$('#newCategoryText').show();
+		$('#isNewCategory').val(1);
+
+	})
 </script>
 <?php
 include(ADMIN_INCLUDE_PATH . '/close.php');

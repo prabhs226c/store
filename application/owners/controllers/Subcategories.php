@@ -30,7 +30,13 @@ class SubCategories extends MY_Controller {
 		$postData= $this->input->post();
 		if($postData && !empty($postData)) {
 			$this->form_validation->set_rules('title', 'title', 'required|min_length[3]|max_length[125]');
-			$this->form_validation->set_rules('category_id', 'category', 'required');
+
+			if($this->input->post('isNewCategory')==0) {
+
+				$this->form_validation->set_rules('category_id', 'category', 'required');
+			}else{
+				$this->form_validation->set_rules('newCategory', 'category', 'required');
+			}
 			$this->form_validation->set_rules('type', 'type', 'required');
 			$this->form_validation->set_rules('restaurant_id', 'restaurant', 'required');
 			$this->form_validation->set_rules('description', 'description', 'required|min_length[10]');
@@ -39,7 +45,13 @@ class SubCategories extends MY_Controller {
 			if ($this->form_validation->run() != FALSE)
 			{
 				$data_array['title']= urlencode($this->input->post('title'));
-				$data_array['category_id']= $this->input->post('category_id');
+				if($this->input->post('isNewCategory')==0) {
+					$data_array['category_id'] = $this->input->post('category_id');
+				}else{
+					$this->db->insert('tbl_categories',['title'=>$this->input->post('newCategory'),'image'=>' ','status'=>1]);
+					$data_array['category_id'] = $this->db->insert_id();
+				}
+
 				$data_array['type']= $this->input->post('type');
 				$data_array['restaurant_id']= $this->input->post('restaurant_id');
 				$data_array['description']= urlencode($this->input->post('description'));
@@ -96,7 +108,14 @@ class SubCategories extends MY_Controller {
 		$postData= $this->input->post();
 		if($postData && !empty($postData)) {
 			$this->form_validation->set_rules('title', 'title', 'required|min_length[3]|max_length[125]');
-			$this->form_validation->set_rules('category_id', 'category', 'required');
+
+			if($this->input->post('isNewCategory')==0) {
+
+				$this->form_validation->set_rules('category_id', 'category', 'required');
+			}else{
+				$this->form_validation->set_rules('newCategory', 'category', 'required');
+			}
+
 			$this->form_validation->set_rules('type', 'type', 'required');
 			$this->form_validation->set_rules('restaurant_id', 'restaurant', 'required');
 			$this->form_validation->set_rules('description', 'description', 'required|min_length[10]');
@@ -105,7 +124,14 @@ class SubCategories extends MY_Controller {
 			if ($this->form_validation->run() != FALSE)
 			{
 				$data_array['title']= urlencode($this->input->post('title'));
-				$data_array['category_id']= $this->input->post('category_id');
+
+				if($this->input->post('isNewCategory')==0) {
+					$data_array['category_id'] = $this->input->post('category_id');
+				}else{
+					$this->db->insert('tbl_categories',['title'=>$this->input->post('newCategory'),'image'=>' ','status'=>1]);
+					$data_array['category_id'] = $this->db->insert_id();
+				}
+
 				$data_array['type']= $this->input->post('type');
 				$data_array['restaurant_id']= $this->input->post('restaurant_id');
 				$data_array['description']= urlencode($this->input->post('description'));

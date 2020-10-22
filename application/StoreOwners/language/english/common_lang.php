@@ -182,7 +182,12 @@ $lang["restaurant_details"] = "Restaurant details";
 $lang["food_information"] = "Food information";
 $lang["contact_and_address_information"] = "Contact & Address Information";
 
-
+//units
+$lang['per_kg'] = "per KG";
+$lang['per_unit'] = "per Unit";
+$lang['per_lbs'] = "per lbs";
+$lang['per_dozen'] = "per dozen";
+$lang['unit_type'] = "Unit Type";
 
 
 //Subcategory

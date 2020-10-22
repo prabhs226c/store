@@ -90,23 +90,23 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                 </div>
                                             </div>
 
-                                            <!--
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="col-sm-4 control-label"><?= $this->lang->line('country') ?>:</label>
+                                                    <label class="col-sm-4 control-label"><?= $this->lang->line('category') ?>:</label>
                                                     <div class="col-sm-8">
-                                                        <select class="form-control required" name="country_id" id="country_id">
+                                                        <select class="form-control required" name="grocerycat_id" id="grocerycat_id">
 
-                                                            <option value=""><?= $this->lang->line('select_country') ?></option>
+                                                            <option value=""><?= $this->lang->line('select_category') ?></option>
                                                             <?php
-                                                            foreach ($country as $row) { ?>
-                                                                <option value="<?= $row['id']; ?>"><?= urldecode($row['name']); ?></option>
+                                                            foreach ($category as $row) { ?>
+                                                                <option value="<?= $row['id']; ?>"><?= urldecode($row['title']); ?></option>
                                                             <?php } ?>
                                                         </select>
-                                                        <?= form_error('country_id'); ?>
+                                                        <?= form_error('grocerycat_id'); ?>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div><!--
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label"><?= $this->lang->line('state') ?>:</label>

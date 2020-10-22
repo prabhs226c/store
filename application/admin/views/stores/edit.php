@@ -94,10 +94,10 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                     <div class="col-sm-8">
                                                         <select class="form-control required" name="cuisine_id" id="cuisine_id">
 
-                                                            <option value=""><?= $this->lang->line('select_cuisine') ?></option>
+                                                            <option value=""><?= $this->lang->line('select_category') ?></option>
                                                             <?php
-                                                            foreach ($cuisine as $row) { ?>
-                                                                <option value="<?= $row['id']; ?>"><?= urldecode($row['title']); ?></option>
+                                                            foreach ($category as $row) { ?>
+                                                                <option  <?php if($row['id'] == $results->grocerycat_id){echo 'selected="selected"';}?> value="<?= $row['id']; ?>"><?= urldecode($row['title']); ?></option>
                                                             <?php } ?>
                                                         </select>
                                                         <?= form_error('cuisine_id'); ?>

@@ -43,6 +43,32 @@ class Orders extends MY_Controller {
 
     }
 
+    public function details($id)
+	{
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+		$this->dataModule['order_info']=  $this->Sitefunction->get_single_by_query("SELECT o.*, r.name, r.profile_image, r.address, a.address_line_1, a.address_line_2, a.phone, a.name as user_name, a.city, u.phone as customer_phone, u.email as customer_email, u.fullname as customer_name FROM ".TBL_ORDERS." as o LEFT JOIN ".TBL_RESTAURANTS." as r ON r.id=o.restaurent_id LEFT JOIN ".TBL_ADDRESS." as a ON a.id=o.address_id  LEFT JOIN ".TBL_USERS." as u ON u.id=o.user_id WHERE o.id=".$id." and o.status=1 and r.owner_id=".$this->user_id);
+		$this->dataModule['controller']=$this;
+
+		$where = array('od.order_id='=>$id, 'od.status'=>1);
+		$columns = "od.*, p.type, p.title, p.image";
+		$join = array(TBL_SUBCATEGORIES.' as p'=>"od.product_id=p.id");
+		$group_by = 'od.id';
+		$this->dataModule['get_order_details']=  $this->Sitefunction->get_all_rows(TBL_ORDERDETAIL.' as od', $columns, $where, $join, array(), '', 'LEFT', array(), $group_by, array(), array());
+
+		// print_r($this->dataModule['order_info']);
+		//  die;
+
+		if(empty($this->dataModule['order_info'])) {
+			$this->session->set_flashdata('error', $this->lang->line('order_not_found'));
+			echo json_encode(['success'=>0,'error'=>"Order not Found"]);
+			die();
+		}
+			echo json_encode([$this->dataModule['order_info'],$this->dataModule['get_order_details']]);
+
+
+	}
 
     public function change_order_status() {
 		$order_status= $this->input->get_post('order_status');
@@ -81,6 +107,43 @@ class Orders extends MY_Controller {
         }
         
     }
+	public function change_order_status2() {
+		$order_status= $this->input->get_post('order_status');
+		if($this->Sitefunction->update(TBL_ORDERS, array("order_status"=>$this->input->get_post('order_status')), array('id'=>$this->input->get_post('orderid')))){
+			$addNotification= array();
+			if($order_status==2) {
+				$addNotification['title'] = urlencode("Order Accepted");
+				$addNotification['Description'] = urlencode("Your order has been accepted.");
+			}else if($order_status==3) {
+				$addNotification['title'] = urlencode("Order Declined");
+				$addNotification['Description'] = urlencode("Opps! Your order is desclined by restaurant.");
+
+			}else if($order_status==4) {
+				$addNotification['title'] = urlencode("Order Inprocess");
+				$addNotification['Description'] = urlencode("Your order is in process.");
+
+			}
+			// else if($order_status==5) {
+			//     $addNotification['title'] = "Order Delivered";
+			//     $addNotification['Description'] = "Your order has been delivered successfully.";
+
+			// }
+
+			$addNotification['type'] = "1";
+			$addNotification['type_id'] = $this->input->get_post('orderid');
+			$addNotification['user_id']= $this->input->get_post('user_id');
+			$addNotification['created']= date('Y-m-d H:i:s');
+			$addNotification['updated']= date('Y-m-d H:i:s');
+			$this->Sitefunction->insert(TBL_NOTIFICATIONS, $addNotification);
+			$notification_id= $this->db->insert_id();
+			$this->sendPushNotification($this->input->get_post('user_id'), $notification_id);
+			$this->session->set_flashdata('success', $this->lang->line('order_status_updated_successfully'));
+			redirect(ORDER_PATH);
+		}else {
+			$this->session->set_flashdata('error', $this->lang->line('error_try_again'));
+		}
+
+	}
 
    
 }

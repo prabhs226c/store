@@ -73,7 +73,11 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                                 <option <?= $row['id'] == $results->category_id ? 'selected' : '' ?> value="<?= $row['id']; ?>"><?= urldecode($row['title']); ?></option>
                                                             <?php } ?>
                                                         </select>
-                                                        <?= form_error('category_id'); ?>
+														<input type="hidden" id="isNewCategory"  name="isNewCategory" value="0">
+														<button type="button" id="newCategoryBtn">New Category</button>
+														<input id="newCategoryText"  style="display:none" class="form-control " type="text" name="newCategory" value="" placeholder="New Category">
+
+														<?= form_error('category_id'); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,6 +232,15 @@ include(ADMIN_INCLUDE_PATH . '/footer.php'); ?>
         return true;
     }
 
+	//// btn to click
+	let newCatBtn = document.getElementById('newCategoryBtn');
+	newCatBtn.addEventListener("click",(e)=>{
+		$('#category_id').hide();
+		$('#newCategoryBtn').hide();
+		$('#newCategoryText').show();
+		$('#isNewCategory').val(1);
+
+	})
 </script>
 <?php
 include(ADMIN_INCLUDE_PATH . '/close.php');

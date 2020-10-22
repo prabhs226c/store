@@ -70,7 +70,7 @@
                                         if (!empty($results)) {
 
                                             $html = '';
-                                            
+
                                             foreach ($results as $single) { ?>
                                             <tr>
                                             <td><input type='checkbox' name='checked_id' id='checkbox1' class='checkbox' value='<?=$single['id']?>'/></td>

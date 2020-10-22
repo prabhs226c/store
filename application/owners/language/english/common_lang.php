@@ -198,12 +198,14 @@ $lang['description'] = "Description";
 
 
 $lang["sides"] = "Sides";
+$lang["add_sides"] = "Add Side";
 $lang["sides_list"] = "Sides List";
 
 
 //Addon
 
 $lang["addon"] = "Add On";
+$lang["add_addon"] = "Add Add On";
 $lang["addon_list"] = "Add On List";
 
 

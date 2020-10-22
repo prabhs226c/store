@@ -10,7 +10,7 @@ class Stores extends MY_Controller
         parent::__construct();
         $language = $this->session->userdata('lang') ? $this->session->userdata('lang') : 'english';
         $this->lang->load("common", $language);
-        $this->dataModule['cuisine'] = $this->Sitefunction->get_rows(TBL_CUISINE, 'id, title', array('status' => 1));
+        $this->dataModule['category'] = $this->Sitefunction->get_rows(TBL_STORE_CATEGORIES, 'id, title', array('status' => 1));
         $this->dataModule['country'] = $this->Sitefunction->get_rows(TBL_COUNTRY, 'id, name', array('status' => 1));
         $this->dataModule['owners'] = $this->Sitefunction->get_rows(TBL_STORE_OWNERS, 'id, first_name, last_name', array('status' => 1));
     }
@@ -48,6 +48,7 @@ class Stores extends MY_Controller
             $this->form_validation->set_rules('owner_id', 'owner', 'required');
             $this->form_validation->set_rules('phone_number', 'phone', 'required|min_length[10]|max_length[12]');
             $this->form_validation->set_rules('email_id', 'email', 'required|valid_email|min_length[3]|max_length[125]');
+            $this->form_validation->set_rules('grocerycat_id', 'Grocery Category', 'required');
 
 //            $this->form_validation->set_rules('cuisine_id', 'cuisine', 'required');
             // $this->form_validation->set_rules('city_id', 'city', 'required');
@@ -64,7 +65,7 @@ class Stores extends MY_Controller
                 $data_array['owner_id'] = $this->input->post('owner_id');
                 $data_array['email'] = ($this->input->post('email_id'));
                 $data_array['phone'] = $this->input->post('phone_number');
-                //$data_array['cuisine_id'] = $this->input->post('cuisine_id');
+                $data_array['grocerycat_id'] = $this->input->post('grocerycat_id');
                 // $data_array['city_id'] = $this->input->post('city_id');
                 // $data_array['state_id'] = $this->input->post('state_id');
                 // $data_array['country_id'] = $this->input->post('country_id');

@@ -59,8 +59,8 @@
                                             <th><?=$this->lang->line('category')?></th>
                                             <th><?=$this->lang->line('store')?></th>
                                             <th><?=$this->lang->line('subcategory')?></th>
-                                            <th><?=$this->lang->line('type')?></th>
-                                            <th><?=$this->lang->line('discount')?></th>
+                                            <th><?=$this->lang->line('price')?></th>
+											<th><?=$this->lang->line('unit_type')?></th>
                                             <th width="200px"><?=$this->lang->line('description')?></th>
                                             <th><?=$this->lang->line('action')?></th>
 
@@ -80,8 +80,22 @@
                                             <td><?=urldecode($single['cat_title'])?></td>
                                             <td><?=urldecode($single['restaurant_name'])?></td>
                                             <td><?=urldecode($single['title'])?></td>
-                                            <td><?=$single['type']==1?"Veg":"Non-veg"?></td>
-                                            <td><?=$single['discount']?><?=$single['discount_type']==0?"$":"%"?></td>
+												<td><?=$single['price']?>$</td>
+												<td><?php switch($single['type']){
+														case 1:
+															echo $this->lang->line('per_kg');
+															break;
+														case 2:
+															echo $this->lang->line('per_lbs');
+															break;
+														case 3:
+															echo $this->lang->line('per_unit');
+															break;
+														case 4:
+															echo $this->lang->line('per_dozen');
+															break;
+													}?></td>
+
                                             <td><?=urldecode($single['description'])?></td>
                                             <td>&nbsp;&nbsp;<a class="ti-pencil-alt" data-toggle="tooltip" style="color: #00c0ef;" title="<?=$this->lang->line('edit')?>!" href="<?=STORE_SUBCATEGORY_PATH?>/edit/<?=$single['id']?>"></a>&nbsp;&nbsp;<a href="javascript:void(0)" class="ti-trash" style="color:red" data-toggle="tooltip" title="<?=$this->lang->line('delete')?>!" onclick="delete_status('<?=STORE_SUBCATEGORY_PATH?>/delete', '<?=$single['id']?>')"></a>&nbsp;&nbsp</td>
                                             </tr>

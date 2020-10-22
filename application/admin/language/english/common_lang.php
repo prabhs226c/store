@@ -397,4 +397,12 @@ $lang["coupon_updated_successfully"] = "Coupon updated successfully.";
 
 $lang["wallet_amount"] = "Wallet Amount";
 $lang["paid_amount"] = "Paid Amount";
+
+
+//units
+$lang['per_kg'] = "per KG";
+$lang['per_unit'] = "per Unit";
+$lang['per_lbs'] = "per lbs";
+$lang['per_dozen'] = "per dozen";
+$lang['unit_type'] = "Unit Type";
 ?>

@@ -49,16 +49,14 @@
 
                             
 
-                            <div class="bootstrap-data-table-panel">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                
+                            <div class="bootstrap-data-table-panel"><table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th><input type='checkbox' name='select_all' id='select_all' value=''/></th>
                                             <th><?=$this->lang->line('order_id')?></th>
                                             <th><?=$this->lang->line('user')?></th>
                                             <th><?=$this->lang->line('order_status')?></th>
-                                            <th><?=$this->lang->line('payment_status')?></th>
+                                            <th>Contactless Delivery</th>
                                             <th><?=$this->lang->line('payment_type')?></th>
                                             <th><?=$this->lang->line('total_amount')?></th>
                                             <th><?=$this->lang->line('discount')?></th>
@@ -76,13 +74,13 @@
                                             $html = '';
                                             
                                             foreach ($results as $single) { ?>
-                                            <tr>
+                                            <tr onClick="getOrderDetails(<?=$single['id']?>)" class="getOrderDetails">
                                             <td><input type='checkbox' name='checked_id' id='checkbox1' class='checkbox' value='<?=$single['id']?>'/></td>
                                             <td>#<?=$single['id']?></td>
                                             <td><?=urldecode($single['fullname'])?></td>
                                             <td><?=$controller->getOrderStatus($single['order_status'])?></td>
-                                            <td><?=$controller->getPaymentStatus($single['payment_status'])?></td>
-                                            <td><?=$controller->getPaymentType($single['payment_type'])?></td>
+                                            <td><?=$single['contactless']==0?"No":"Yes"?></td>
+                                            <td><?=$controller->getPaymentType($single['payment_type'])?></td>c
                                             <td>$<?=$single['grand_total']?></td>
                                             <td><?=$single['discount_price']?></td>
                                             <td><?=$single['tip_price']?></td>
@@ -109,6 +107,74 @@
         </div><!-- /# container-fluid -->
     </div><!-- /# main -->
 </div><!-- /# content wrap -->
+
+	<div class="modal fade" id="orderDetails" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h2>Order Details</h2>
+				</div>
+
+				<div id="modal-body" class="modal-body">
+					<table class="detailTable">
+						<tr><th>OrderId</th><td id="tbl_orderId"></td></tr>
+						<tr><th>Customer</th><td id="tbl_orderCustomer"></td></tr>
+						<tr><th>Address</th><td id="tbl_orderAddress"></td></tr>
+						<tr><th>Phone</th><td id="tbl_orderPhone"></td></tr>
+						<tr><th>email</th><td id="tbl_orderEmail"></td></tr>
+						<tr><th>Item</th><td id="tbl_orderItem"></td></tr>
+						<tr><th>Qty</th><td id="tbl_orderQty"></td></tr>
+						<tr><th>Special Note</th><td id="tbl_orderNote"></td></tr>
+
+					</table>
+					<form action="<?=ORDER_PATH?>/change_order_status2" method="post">
+						<input type="hidden" name="order_status" value="2">
+						<input type="hidden" name="orderid" id="formorderid" value="">
+						<input type="hidden" name="userid"  id="formuserid" value="">
+						<button type="submit"  style="margin: 0 auto;display: block;" class="btn btn-success btn-lg">Accept Order</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<input type="hidden" id="currentOrder" value="">
+	<script>
+        function getOrderDetails(id) {
+
+                let orderId = id;
+                $.ajax({
+                    url: "<?= ORDER_PATH ?>/details/"+orderId,
+                    method: "get",
+                    context: document.body,
+
+                }).done(function (response) {
+                    showOrderDetails(orderId,response);
+                });
+
+        }
+
+        function showOrderDetails(id,response)
+		{
+
+			response = JSON.parse(response)
+
+			$('#tbl_orderId').html(id)
+			$('#formorderid').val(id)
+			$('#formuserid').val(response[0]['user_id'])
+			$('#tbl_orderCustomer').html(response[0]['customer_name'])
+			$('#tbl_orderAddress').html(response[0]['address'])
+			$('#tbl_orderPhone').html(response[0]['phone'])
+			$('#tbl_orderEmail').html(response[0]['customer_email'])
+			$('#tbl_orderItem').html(response[1][0]['title'])
+			$('#tbl_orderQty').html(response[1][0]['product_quantity'])
+			$('#tbl_orderNote').html(response[1][0]['extra_note'])
+
+
+			$('#orderDetails').modal()
+
+		}
+	</script>
 
 <?php include(ADMIN_INCLUDE_PATH . '/footer.php');
 include(ADMIN_INCLUDE_PATH . '/close.php'); ?>
