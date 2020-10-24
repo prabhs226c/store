@@ -79,7 +79,33 @@
         .fileuploadvalid {
             display: none
         }
-    </style>
+
+		#tbl_items,#tbl_items tbody{
+			width:100%;
+		}
+		#tbl_items tbody tr th, #tbl_items tbody tr td{
+			border-top: 1px solid #ddd;
+			padding:8px;
+		}
+		.nestedTbody tr {
+			width: 100%;
+			display: flex;
+			flex-flow: row wrap;
+		}
+		.nestedTbody tr th,.nestedTbody tr td{
+				flex-grow:0.5;
+			max-width:48%;
+		}
+		.nestedTbody tr td{
+			text-align:left;
+		}
+		table.detailTable.table.tableNested tbody tr th{
+			color:white;
+		}
+		table.detailTable.table.tableNested tbody tr td,table.detailTable.table.tableNested tbody tr th {
+			width: 33%;
+		}
+	</style>
 </head>
 
 <body>

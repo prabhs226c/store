@@ -162,7 +162,7 @@ include(ADMIN_INCLUDE_PATH . '/sidebar.php');
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label"><?= $this->lang->line('address') ?>:</label>
                                                     <div class="col-sm-10">
-                                                        <textarea id="address" class="form-control required" name="address" placeholder="<?= $this->lang->line('enter_address') ?>"><?= set_value('address') ?></textarea>
+                                                        <textarea  id="address" class="form-control required" name="address" placeholder="<?= $this->lang->line('enter_address') ?>"><?= set_value('address') ?></textarea>
                                                         <?= form_error('address'); ?>
                                                     </div>
                                                 </div>
@@ -334,6 +334,20 @@ include(ADMIN_INCLUDE_PATH . '/footer.php');  ?>
             }
         });
     })
+</script>
+	<script defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6bhsghvjbvVvHmTSUTQiSCSr9QJo0EcA&libraries=places&callback=initMap">
+	</script>
+<script>
+	$(document).ready(function () {
+		google.maps.event.addDomListener(window, 'load', initialize);
+	});
+
+	function initialize() {
+		var input = document.getElementById('address');
+		var autocomplete = new google.maps.places.Autocomplete(input);
+
+	}
 </script>
 <?php
 include(ADMIN_INCLUDE_PATH . '/close.php');

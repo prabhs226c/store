@@ -81,8 +81,9 @@ class Restaurants extends MY_Controller
                 $address = ($data_array['address']); // . ' ' . $data_array['pincode']; // Google HQ
                 $prepAddr = str_replace(' ', '+', $address);
                 //$geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address=' . $prepAddr . '&sensor=false' . '&key=AIzaSyB6bhsghvjbvVvHmTSUTQiSCSr9QJo0EcA');
-                $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address=' . $prepAddr . '&sensor=false' . '&key=' . $this->settings->map_api_key);
+                $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address=' . $prepAddr . '&sensor=false' . '&key=AIzaSyB6bhsghvjbvVvHmTSUTQiSCSr9QJo0EcA' );
                 $output = json_decode($geocode);
+
                 if ($output->results[0] && $output->results[0]->geometry && $output->results[0]->geometry->location && $output->results[0]->geometry->location->lat) {
                     $latitude = $output->results[0]->geometry->location->lat;
                     $longitude = $output->results[0]->geometry->location->lng;
@@ -190,7 +191,7 @@ class Restaurants extends MY_Controller
                 $data_array['closing_time'] = date('H:i:s', strtotime($this->input->post('closing_time')));
                 $address = ($data_array['address']); // . ' ' . $data_array['pincode']; // Google HQ
                 $prepAddr = str_replace(' ', '+', $address);
-                $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address=' . $prepAddr . '&sensor=false' . '&key=' . $this->settings->map_api_key);
+                $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address=' . $prepAddr . '&sensor=false' . '&key=AIzaSyB6bhsghvjbvVvHmTSUTQiSCSr9QJo0EcA' );
                 $output = json_decode($geocode);
 
                 if ($output->results[0] && $output->results[0]->geometry && $output->results[0]->geometry->location && $output->results[0]->geometry->location->lat) {

@@ -359,7 +359,22 @@ include(ADMIN_INCLUDE_PATH . '/footer.php');  ?>
             }
         });
     })
+
 </script>
+	<script defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6bhsghvjbvVvHmTSUTQiSCSr9QJo0EcA&libraries=places&callback=initMap">
+	</script>
+	<script>
+		$(document).ready(function () {
+			google.maps.event.addDomListener(window, 'load', initialize);
+		});
+
+		function initialize() {
+			var input = document.getElementById('address');
+			var autocomplete = new google.maps.places.Autocomplete(input);
+
+		}
+	</script>
 <?php
 include(ADMIN_INCLUDE_PATH . '/close.php');
 ?>

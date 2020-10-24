@@ -3435,3 +3435,7 @@ input:checked + .slider:before {
 .error {
   color: #FA001A;
 }
+#tbl_items tbody tr th, #tbl_items tbody tr td{
+	border-top: 1px solid #ddd;
+	padding:8px;
+}
